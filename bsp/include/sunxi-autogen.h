@@ -1,0 +1,1 @@
+#define AW_BSP_VERSION "e8778d9a2c, 2025-01-15 17:03:49 +0800"
