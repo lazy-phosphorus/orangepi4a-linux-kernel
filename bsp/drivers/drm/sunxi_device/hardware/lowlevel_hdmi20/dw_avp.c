@@ -1290,6 +1290,8 @@ int dw_avp_config(void)
 	/* config scramble */
 	dw_avp_config_scramble();
 
+	dw_fc_iteration_process();
+
 	hdmi_trace("dw avp config done\n");
 	return 0;
 }

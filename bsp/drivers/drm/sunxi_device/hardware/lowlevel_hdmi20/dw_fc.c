@@ -911,3 +911,9 @@ int dw_infoframe_packet(void)
 	hdmi_trace("dw infoframe config done!\n");
 	return 0;
 }
+
+int dw_fc_iteration_process(void)
+{
+	dw_write(FC_INVIDCONF, dw_read(FC_INVIDCONF));
+	return 0;
+}
