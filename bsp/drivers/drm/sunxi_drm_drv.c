@@ -1036,6 +1036,8 @@ struct proc_dir_entry *sunxi_drm_get_procfs_dir(void)
 
 #endif
 
+int sunxi_drm_fbdev_init(struct drm_device *dev);
+
 static int sunxi_drm_bind(struct device *dev)
 {
 	int ret;
@@ -1078,10 +1080,11 @@ static int sunxi_drm_bind(struct device *dev)
 		DRM_ERROR("setup bootloader connecting failed.Skip commit_init_connecting.\n");
 		goto dev_register;
 	}
-	commit_init_connecting(drm);
+	//commit_init_connecting(drm);
 
 dev_register:
 	ret = drm_dev_register(drm, 0);
+	sunxi_drm_fbdev_init(drm);
 
 #if IS_ENABLED(CONFIG_PROC_FS)
 	ret = sunxi_drm_procfs_init(drm);

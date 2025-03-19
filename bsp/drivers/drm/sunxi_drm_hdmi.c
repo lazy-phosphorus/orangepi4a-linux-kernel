@@ -3310,25 +3310,23 @@ static int _sunxi_hdmi_init_drm(struct sunxi_drm_hdmi *hdmi)
 		max_val = 0xFFFF;
 
 	/* drm connector propert register */
-	hdmi->prop_pxfmt_cap = sunxi_drm_create_attach_property_bitmask(drm,
+	hdmi->prop_pxfmt_cap = sunxi_drm_create_attach_property_enum(drm,
 			&connect->base, "pixelformat_support", shdmi_prop_list_pxfmt,
-			ARRAY_SIZE(shdmi_prop_list_pxfmt),
-			max_val, hdmi->hdmi_ctrl.drv_pixel_format_cap);
-/*
+			ARRAY_SIZE(shdmi_prop_list_pxfmt), hdmi->hdmi_ctrl.drv_pixel_format_cap);
+
 	hdmi->prop_pxfmt = sunxi_drm_create_attach_property_range(drm,
 			&connect->base, "pixelformat",
 			min_val, max_val, hdmi->hdmi_ctrl.drv_pixel_format);
-*/
-	max_val = 0x1F;
-	hdmi->prop_dr_cap = sunxi_drm_create_attach_property_bitmask(drm,
+
+	hdmi->prop_dr_cap = sunxi_drm_create_attach_property_enum(drm,
 			&connect->base, "dynamicrange_support", shdmi_prop_list_dr,
-			ARRAY_SIZE(shdmi_prop_list_dr),
-			max_val, hdmi->hdmi_ctrl.drv_dynamic_range_cap);
-/*
+			ARRAY_SIZE(shdmi_prop_list_dr), hdmi->hdmi_ctrl.drv_dynamic_range_cap);
+
+	max_val = 0x1F;
 	hdmi->prop_dr = sunxi_drm_create_attach_property_range(drm,
 			&connect->base, "dynamicrange",
 			min_val, max_val, hdmi->hdmi_ctrl.drv_dynamic_range);
-*/
+
 	hdmi_inf("drm hdmi connector create finish\n");
 	return 0;
 }
