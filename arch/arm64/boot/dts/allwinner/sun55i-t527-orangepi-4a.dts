@@ -3638,6 +3638,17 @@ chn_cfg_mode     : Hardware DE channel allocation config. 0:single display with 
                 spi-rx-bus-width = <1>;
                 spi-tx-bus-width = <1>;
                 status = "okay";
+
+                partitions {
+                        compatible = "fixed-partitions";
+                        #address-cells = <1>;
+                        #size-cells = <1>;
+
+                        uboot@0 {
+                                label = "uboot";
+                                reg = <0x0 0x1000000>;
+                        };
+                };
         };
 };
 
