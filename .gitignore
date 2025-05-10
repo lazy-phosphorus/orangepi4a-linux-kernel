@@ -10,6 +10,10 @@
 #
 # Normal rules (sorted alphabetically)
 #
+
+/cache
+*.scr
+
 .*
 *.a
 *.asn1.[ch]
